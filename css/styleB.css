@@ -50,9 +50,9 @@ ul.bup_board_items > li > img {
   border-radius: 100%;
   width: 30px;
   height: 30px;
-  position: absolute;
-  top: 353px;
-  right: calc(50% - 15px);
+  position: relative;
+  bottom: 15px;
+  margin: 0 auto;
 }
 
 .bup_product_title {
@@ -61,7 +61,6 @@ ul.bup_board_items > li > img {
 }
 
 .bup_product_price {
-  margin-top: 20px;
   text-align: center;
   font-size: 1.2em;
   color: #5cb85c;
