@@ -44,7 +44,7 @@ ul.bup_board_items > li > img {
   margin: 0 auto;
 }
 .bup_product_remove {
-  background: url(images/appbar.close.svg);
+  background-image: url(//cdn.bevyup.com/icons/appbar.close.svg?fill=_d9534f);
   background-size: contain;
   background-repeat: no-repeat;
   width: 30px;
