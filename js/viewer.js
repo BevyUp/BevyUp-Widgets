@@ -1,4 +1,6 @@
 ;(function () {
+  var BoardViewerWidget
+
   var template = {
     base: '<div class="bup_board">' +
             '<div class="bup_board_title">BevyUp Board App</div>' +
@@ -63,32 +65,33 @@
   })()
 
   window.bevyUpPartnerAsyncInitArray = (window.bevyUpPartnerAsyncInitArray || []).concat(function () {
+    var inviteId = ''
     var overrideInviteIdResult = window.location.search.match(new RegExp('overrideInviteId=([^&#]+)'))
     if (overrideInviteIdResult) {
-      window.BevyUpApi.setInviteId(overrideInviteIdResult[1]) // 755984 881327
+      inviteId = overrideInviteIdResult[1] // 755984 881327
     }
-    window.BevyUpApi.init(initCallback)
+    window.BevyUpApi
+      .init(inviteId)
+      .then(function (isInSession) {
+        window.InitializeBoardWidget()
+      })
   })
 
   window.InitializeBoardWidget = function () {
-    var BoardViewerWidget = insertBoardWidget()
-    if (BoardViewerWidget) {
-      var boardName = BoardViewerWidget.dataset.productlist || 'Board'
-      var container = BoardViewerWidget.querySelector('.bup_board')
+    if (!BoardViewerWidget) {
+      BoardViewerWidget = insertBoardWidget()
+      if (BoardViewerWidget) {
+        var boardName = BoardViewerWidget.dataset.productlist || 'Board'
+        var container = BoardViewerWidget.querySelector('.bup_board')
 
-      window.BevyUpApi
-        .getProductListsModel()
-        .then(function (productListsModel) {
-          var savedListPromise = productListsModel.getOrCreateProductList(boardName)
-          var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden')
-          ListManager.init(container, savedListPromise, hiddenListPromise)
-        })
-    }
-  }
-
-  function initCallback (err, sessionFound) {
-    if (!err && sessionFound) {
-      window.InitializeBoardWidget()
+        window.BevyUpApi
+          .getProductListsModel()
+          .then(function (productListsModel) {
+            var savedListPromise = productListsModel.getOrCreateProductList(boardName)
+            var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden')
+            ListManager.init(container, savedListPromise, hiddenListPromise)
+          })
+      }
     }
   }
 
