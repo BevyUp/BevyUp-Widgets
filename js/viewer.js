@@ -64,25 +64,31 @@
 
   window.bevyUpPartnerAsyncInitArray = (window.bevyUpPartnerAsyncInitArray || []).concat(function () {
     var overrideInviteIdResult = window.location.search.match(new RegExp('overrideInviteId=([^&#]+)'))
-    window.BevyUpApi.setInviteId(overrideInviteIdResult[1]) // 755984 881327
+    if (overrideInviteIdResult) {
+      window.BevyUpApi.setInviteId(overrideInviteIdResult[1]) // 755984 881327
+    }
     window.BevyUpApi.init(initCallback)
   })
 
+  window.InitializeBoardWidget = function () {
+    var BoardViewerWidget = insertBoardWidget()
+    if (BoardViewerWidget) {
+      var boardName = BoardViewerWidget.dataset.productlist || 'Board'
+      var container = BoardViewerWidget.querySelector('.bup_board')
+
+      window.BevyUpApi
+        .getProductListsModel()
+        .then(function (productListsModel) {
+          var savedListPromise = productListsModel.getOrCreateProductList(boardName)
+          var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden')
+          ListManager.init(container, savedListPromise, hiddenListPromise)
+        })
+    }
+  }
+
   function initCallback (err, sessionFound) {
     if (!err && sessionFound) {
-      var BoardViewerWidget = insertBoardWidget()
-      if (BoardViewerWidget) {
-        var boardName = BoardViewerWidget.dataset.productlist || 'Board'
-        var container = BoardViewerWidget.querySelector('.bup_board')
-
-        window.BevyUpApi
-          .getProductListsModel()
-          .then(function (productListsModel) {
-            var savedListPromise = productListsModel.getOrCreateProductList(boardName)
-            var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden')
-            ListManager.init(container, savedListPromise, hiddenListPromise)
-          })
-      }
+      window.InitializeBoardWidget()
     }
   }
 
