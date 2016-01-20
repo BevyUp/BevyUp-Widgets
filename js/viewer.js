@@ -13,9 +13,9 @@
 
     product: '<li>' +
                '<img src=""/>' +
+               '<a class="bup_product_remove_link" href="#"><div class="bup_product_remove"></div></a>' +
                '<div class="bup_product_price"></div>' +
                '<div class="bup_product_title"></div>' +
-               '<a class="bup_product_remove_link" href="#"><div class="bup_product_remove"></div></a>' +
                '<div class="bup_comments"></div>' +
              '</li>',
 
