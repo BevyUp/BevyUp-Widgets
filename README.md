@@ -28,4 +28,4 @@ Include one of the provided stylesheets and the `viewer.js` document on your pag
 
 ###Advanced Usage
 
-Clone this repository.  Modify the templates or functionality in `viewer.js`.  Refer to the BevyUpApi documentation for additional functionality.  Include the files in the same way as the basic usage.
+Clone this repository.  Modify the templates or functionality in `viewer.js`.  Refer to the [BevyUpApi documentation](https://bevyup.atlassian.net/wiki/display/DOC/Javascript+API)  for additional functionality.  Include the files in the same way as the basic usage.
