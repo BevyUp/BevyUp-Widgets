@@ -134,9 +134,12 @@
     container.appendChild(element)
 
     element.querySelector('a.bup_product_remove_link').onclick = function () {
-      container.removeChild(element)
       var other = ListManager.getOther(productList)
-      insertProduct(other.container, other.list, productListNode)
+
+      productList.removeProduct(productListNode)
+        .then(function () {
+          other.list.addProduct(productListNode)
+        })
     }
 
     var renderComments = function () {
@@ -182,12 +185,12 @@
     }
 
     productList.onProductAdded(function (pln) {
-      insertProduct(element, pln)
+      insertProduct(element, productList, pln)
     })
 
     productList.onProductRemoved(function (pln) {
       var e = element.querySelector('[data-productid="' + pln.getProduct().getData().bup_id + '"]')
-      element.removeChild(e)
+      e.remove()
     })
 
     return element
