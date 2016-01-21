@@ -50,8 +50,8 @@ ul.bup_board_items > li > img {
   width: 30px;
   height: 30px;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
 }
 .bup_product_title {
   font-size: 1.2em;
