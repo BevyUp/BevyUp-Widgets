@@ -68,7 +68,7 @@
     var inviteId = ''
     var overrideInviteIdResult = window.location.search.match(new RegExp('overrideInviteId=([^&#]+)'))
     if (overrideInviteIdResult) {
-      inviteId = overrideInviteIdResult[1] // 755984 881327
+      inviteId = overrideInviteIdResult[1]
     }
     window.BevyUpApi
       .init(inviteId)
