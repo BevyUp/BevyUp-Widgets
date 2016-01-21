@@ -15,7 +15,7 @@ Add a `div` tag with class `BevyUp_BoardViewerWidget` on your page where you wou
 </div>
 ```
 
-Include one of the provided stylesheets, the `viewer.js` document on your page, and `//cdn.bevyup.com/gts/your_partnerid/v2` with your partner ID.
+Include one of the provided stylesheets, the `viewer.js` document on your page, and `//cdn.bevyup.com/gts/your_partnerid/v1` with your partner ID.
 
 ```html
 <head>
