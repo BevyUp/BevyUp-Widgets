@@ -26,7 +26,7 @@ ul.bup_board_items {
 
 ul.bup_board_items > li {
   background: #fff;
-  border-radius: 5px;
+  border-radius: 3px;
   border-style: solid;
   border-color: #eee #eee #ddd;
   border-width: 1px 1px 3px;
@@ -40,8 +40,8 @@ ul.bup_board_items > li {
 }
 
 ul.bup_board_items > li > img {
-  border-radius-top-left: 5px;
-  border-radius-top-right: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   display: block;
   width: 100%;
   height: auto;
@@ -63,14 +63,14 @@ ul.bup_board_items > li > img {
 }
 
 .bup_product_title {
-  margin: 5px;
-  font-size: 1em;
-  color: #40acbf;
+  margin: 10px;
+  font-size: 0.8em;
+  color: #58738a;
 }
 
 .bup_product_price {
   float: right;
-  margin: 5px;
+  margin: 10px;
   font-size: 1.2em;
 }
 
