@@ -1,4 +1,6 @@
 ;(function () {
+  var BoardViewerWidget
+
   var template = {
     base: '<div class="bup_board">' +
             '<div class="bup_board_title">BevyUp Board App</div>' +
@@ -63,14 +65,21 @@
   })()
 
   window.bevyUpPartnerAsyncInitArray = (window.bevyUpPartnerAsyncInitArray || []).concat(function () {
+    var inviteId = ''
     var overrideInviteIdResult = window.location.search.match(new RegExp('overrideInviteId=([^&#]+)'))
-    window.BevyUpApi.setInviteId(overrideInviteIdResult[1]) // 755984 881327
-    window.BevyUpApi.init(initCallback)
+    if (overrideInviteIdResult) {
+      inviteId = overrideInviteIdResult[1] // 755984 881327
+    }
+    window.BevyUpApi
+      .init(inviteId)
+      .then(function (isInSession) {
+        window.InitializeBoardWidget()
+      })
   })
 
-  function initCallback (err, sessionFound) {
-    if (!err && sessionFound) {
-      var BoardViewerWidget = insertBoardWidget()
+  window.InitializeBoardWidget = function () {
+    if (!BoardViewerWidget) {
+      BoardViewerWidget = insertBoardWidget()
       if (BoardViewerWidget) {
         var boardName = BoardViewerWidget.dataset.productlist || 'Board'
         var container = BoardViewerWidget.querySelector('.bup_board')
