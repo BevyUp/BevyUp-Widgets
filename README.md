@@ -31,3 +31,16 @@ If the `BevyUp_BoardViewerWidget` is not found when the viewer script is loaded,
 ###Advanced Usage
 
 Clone this repository.  Modify the templates or functionality in `viewer.js`.  Refer to the [BevyUpApi documentation](https://bevyup.atlassian.net/wiki/display/DOC/Javascript+API) for additional functionality.  Include the files in the same way as the basic usage.
+
+####Adding a Save Link
+
+You will need to add an anchor tag to one of the templates with the `bup_save_link` class and send the user to your login page.
+
+```javascript
+    base: '<div class="bup_board">' +
+            '<div class="bup_board_title">BevyUp Board App</div>' +
+            '<div class="bup_board_information">Review your saved and hidden products. <a class="bup_save_link" href="/login.php">Login to Save</a></div>' +
+          '</div>',
+```
+
+This tag should redirect the user to your login page which redirects the user back to their board as per the [documentation](https://bevyup.atlassian.net/wiki/display/DOC/Linking+Your+Company%27s+Users+with+their+BevyUp+Sessions).
