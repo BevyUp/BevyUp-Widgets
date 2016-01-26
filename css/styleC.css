@@ -97,3 +97,15 @@ ul.bup_board_items > li > img {
   width: 100%;
   box-sizing: border-box;
 }
+
+a.bup_save_link {
+  padding: 0.3em;
+  margin: 0.2em;
+  background: #eee;
+  border: solid 1px #ddd;
+  border-radius: 2px;
+  font-size: 0.8em;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+}
