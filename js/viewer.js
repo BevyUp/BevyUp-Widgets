@@ -3,7 +3,7 @@
 
   var template = {
     base: '<div class="bup_board">' +
-            '<div class="bup_board_title">BevyUp Board App</div>' +
+            '<div class="bup_board_title">Your Board</div>' +
             '<div class="bup_board_information">Review your saved and hidden products.</div>' +
           '</div>',
 
