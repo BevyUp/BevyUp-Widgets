@@ -1,0 +1,99 @@
+.bup_board {
+  background: #fff;
+  width: 100%;
+}
+
+.bup_board_title {
+  font-size: 2em;
+}
+
+.bup_board_information {
+  font-size: 1.2em;
+}
+
+.bup_board_list_title {
+  margin-top: 0.5em;
+  font-size: 1.6em;
+}
+
+ul.bup_board_items {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 0;
+}
+
+ul.bup_board_items > li {
+  margin: 50px;
+  background: #fff;
+  vertical-align: top;
+  text-align: left;
+  display: inline-block;
+  width: 240px;
+  font-size: initial;
+  position: relative;
+}
+
+ul.bup_board_items > li > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.bup_product_remove {
+  background-image: url(//cdn.bevyup.com/icons/appbar.close.svg?fill=_d9534f);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.bup_product_title {
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.bup_product_price {
+  font-size: 1.5em;
+}
+
+.bup_name {
+  color: #763fcd;
+}
+
+.bup_timestamp {
+  float: right;
+  color: #5cb85c;
+}
+
+.bup_comments {
+  width: 100%;
+}
+
+.bup_comment {
+  border-top: 1px solid #eee;
+  margin: 5px 0;
+  padding: 5px 0 0;
+}
+
+.bup_comments > input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+a.bup_save_link {
+  padding: 0.3em;
+  margin: 0.2em;
+  background: #eee;
+  border: solid 1px #ddd;
+  border-radius: 2px;
+  font-size: 0.8em;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+}
