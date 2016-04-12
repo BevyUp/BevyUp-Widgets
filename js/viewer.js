@@ -34,9 +34,9 @@
 
     return {
       init: function (container, savedListPromise, hiddenListPromise) {
-		saved = { list: null, container: null };
-		hidden = { list: null, container: null };
-	    function checkDone () {
+	saved = { list: null, container: null };
+	hidden = { list: null, container: null };
+	function checkDone () {
           if (saved.list && hidden.list) {
             saved.container = insertProductList(container, 'Saved Items', saved.list);
             hidden.container = insertProductList(container, 'Hidden Items', hidden.list);
