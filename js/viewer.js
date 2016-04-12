@@ -34,7 +34,9 @@
 
     return {
       init: function (container, savedListPromise, hiddenListPromise) {
-        function checkDone () {
+		saved = { list: null, container: null };
+		hidden = { list: null, container: null };
+	    function checkDone () {
           if (saved.list && hidden.list) {
             saved.container = insertProductList(container, 'Saved Items', saved.list);
             hidden.container = insertProductList(container, 'Hidden Items', hidden.list);
@@ -61,6 +63,7 @@
           return null;
         }
       }
+	  
     };
   })();
 
@@ -78,9 +81,12 @@
   });
 
   window.InitializeBoardWidget = function () {
-    if (!BoardViewerWidget) {
-      BoardViewerWidget = insertBoardWidget();
-      if (BoardViewerWidget) {
+    if (BoardViewerWidget) {
+		BoardViewerWidget.innerHTML = "";
+	}
+    BoardViewerWidget = insertBoardWidget();
+	
+    if (BoardViewerWidget) {
         var boardName = BoardViewerWidget.dataset.productlist || 'Board';
         var container = BoardViewerWidget.querySelector('.bup_board');
 
@@ -91,7 +97,6 @@
             var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden');
             ListManager.init(container, savedListPromise, hiddenListPromise);
           });
-      }
     }
   };
 
