@@ -38,8 +38,8 @@
 	hidden = { list: null, container: null };
 	function checkDone () {
           if (saved.list && hidden.list) {
-            saved.container = insertProductList(container, 'Saved Items', saved.list);
-            hidden.container = insertProductList(container, 'Hidden Items', hidden.list);
+            saved.container = insertProductList(container, 'Products', saved.list);
+            hidden.container = insertProductList(container, 'Removed Items', hidden.list);
           }
         }
 
