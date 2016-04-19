@@ -34,9 +34,9 @@
 
     return {
       init: function (container, savedListPromise, hiddenListPromise) {
-	saved = { list: null, container: null };
-	hidden = { list: null, container: null };
-	function checkDone () {
+        saved = { list: null, container: null };
+        hidden = { list: null, container: null };
+        function checkDone () {
           if (saved.list && hidden.list) {
             saved.container = insertProductList(container, 'Products', saved.list);
             hidden.container = insertProductList(container, 'Removed Items', hidden.list);
@@ -97,9 +97,34 @@
             var hiddenListPromise = productListsModel.getOrCreateProductList(boardName + '_hidden');
             ListManager.init(container, savedListPromise, hiddenListPromise);
           });
+		
+		// Get participant information
+		window.BevyUpApi
+			.getSessionModel()
+				.done(getSessionModelCallback)
+				.fail(getSessionModelCallbackFailure);
     }
   };
 
+    // This is the success callback to the sessionModel request
+    // At this point, we have all of the data needed to power the widget, so we attach the associated html to the DOM
+    function getSessionModelCallback(sessionModel) {
+        var titleObj = document.body.querySelector(".bup_board_title");
+
+        var localParticipant = sessionModel.getLocalParticipant();
+        titleObj.textContent  = localParticipant.getName() + "'s Board";
+		
+		localParticipant.onPresenceStatusChanged(function(pm, status){
+			log(pm.name + " status is " + status);
+		}); 
+    }
+
+    // Handler for failures
+    function getSessionModelCallbackFailure(err) {
+        log("(error) getSessionModelCallbackFailure: " + err);
+    }
+  
+  
   function formatTimestamp (timestamp) {
     var months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
@@ -170,6 +195,8 @@
       }
     };
 
+    renderComments();
+
     productListNode.onCommentAdded(function () {
       renderComments();
     });
@@ -217,5 +244,12 @@
     }
 
     return boardContainer;
+  }
+  
+  // Utility function to log to console with a prefix
+  function log(s) {
+	if (window.console) {
+		console.log("BevyUp Sample> " + s);
+	}
   }
 })();
