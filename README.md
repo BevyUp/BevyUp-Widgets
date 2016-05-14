@@ -22,7 +22,7 @@ Include one of the provided stylesheets, the `viewer.js` document on your page, 
   <!-- other header elements -->
   <link href="path/to/styleA.css" rel="stylesheet" type="text/css"/>
   <script src="path/to/viewer.js" type="text/javascript"></script>
-  <script src="//b.bevyup.com/gts/your_partnerid/v1" type="text/javascript" async></script>
+  <script src="//cdn.bevyup.com/gts/your_partnerid/v1" type="text/javascript" async></script>
 </head>
 ```
 
